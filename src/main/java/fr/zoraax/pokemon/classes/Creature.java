@@ -1,16 +1,19 @@
 package fr.zoraax.pokemon.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Creature {
     protected String nom;
     protected int pointDeVie;
     protected int pointDeVieMax;
-    protected Type[] type;
+    protected List<Type> type;
 
     public Creature(String nom, int pointDeVie, Type[] type) {
         this.nom = nom;
         this.pointDeVie = pointDeVie;
         this.pointDeVieMax = pointDeVie;
-        this.type = type;
+        this.type = new ArrayList<>();
     }
 
     public String getNom() {
@@ -25,7 +28,7 @@ public abstract class Creature {
         return this.pointDeVieMax;
     }
 
-    public Type[] getType() {
+    public List<Type> getType() {
         return this.type;
     }
 
@@ -41,12 +44,12 @@ public abstract class Creature {
         this.pointDeVieMax = pointDeVieMax;
     }
 
-    public void setType(Type[] type) {
+    public void setType(List<Type> type) {
         this.type = type;
     }
 
     public abstract void attaquer(Creature creature, Attaque attaque);
     public abstract void recevoirDegats(int degats);
-    public abstract void coupCritique();
-    public abstract void esquive();
+    public abstract boolean coupCritique();
+    public abstract boolean esquive();
 }
