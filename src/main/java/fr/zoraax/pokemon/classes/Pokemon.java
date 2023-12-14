@@ -1,5 +1,7 @@
 package fr.zoraax.pokemon.classes;
 
+import java.util.Random;
+
 public class Pokemon extends Creature {
     private int niveau;
     private double pointExperience;
@@ -55,9 +57,23 @@ public class Pokemon extends Creature {
     public void recevoirDegats(int degats) {
     }
 
-    public void coupCritique() {
+    /**
+     * Permet de vérifier si l'attaque est un coup critique
+     * @return Booléen - Retourne true si l'attaque est un coup critique
+     */
+    public boolean coupCritique() {
+        Random random = new Random();
+
+        return random.nextInt(100) < 25;
     }
 
-    public void esquive() {
+    /**
+     * Permet de vérifier si le pokemon esquive l'attaque
+     * @return Booléen - Retourne true si le pokemon esquive l'attaque
+     */
+    public boolean esquive() {
+        Random random = new Random();
+
+        return random.nextInt(100) < 10;
     }
 }
