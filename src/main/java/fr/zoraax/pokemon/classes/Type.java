@@ -35,8 +35,17 @@ public class Type {
      * @param type - Type à vérifier
      * @return Booléen - Retourne true si le type est fort contre le type choisit
      */
-    public boolean estFaibleContre(String type) {
+    public boolean estFaibleContre(Type type) {
         return this.faiblesse.contains(type);
+    }
+
+    /**
+     * Vérifie si le type est resistant contre le type choisit
+     * @param type - Type à vérifier
+     * @return Booléen - Retourne true si le type est resistant contre le type choisit
+     */
+    public boolean estResistantContre(Type type) {
+        return this.resistance.contains(type);
     }
 
     public String getNom() {
