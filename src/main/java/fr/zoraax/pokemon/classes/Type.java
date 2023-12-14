@@ -1,14 +1,17 @@
 package fr.zoraax.pokemon.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Type {
     private String nom;
-    private Type[] faiblesse;
-    private Type[] resistance;
+    private List<Type> faiblesse;
+    private List<Type> resistance;
 
     public Type(String nom, Type[] faiblesse, Type[] resistance) {
         this.nom = nom;
-        this.faiblesse = faiblesse;
-        this.resistance = resistance;
+        this.faiblesse = new ArrayList<>();
+        this.resistance = new ArrayList<>();
     }
 
     /**
@@ -16,9 +19,7 @@ public class Type {
      * @param type - Type à ajouter
      */
     public void ajouterFaiblesse(Type type) {
-        Type[] faiblesse = this.getFaiblesse();
-        faiblesse[faiblesse.length] = type;
-        this.setFaiblesse(faiblesse);
+        this.faiblesse.add(type);
     }
 
     /**
@@ -26,9 +27,7 @@ public class Type {
      * @param type - Type à ajouter
      */
     public void ajouterResistance(Type type) {
-        Type[] resistance = this.getResistance();
-        resistance[resistance.length] = type;
-        this.setResistance(resistance);
+        this.resistance.add(type);
     }
 
     /**
@@ -36,13 +35,8 @@ public class Type {
      * @param type - Type à vérifier
      * @return Booléen - Retourne true si le type est fort contre le type choisit
      */
-    public boolean estFaibleContre(Type type) {
-        for (Type faiblesse : this.getFaiblesse()) {
-            if (faiblesse == type) {
-                return true;
-            }
-        }
-        return false;
+    public boolean estFaibleContre(String type) {
+        return this.faiblesse.contains(type);
     }
 
     public String getNom() {
@@ -53,19 +47,19 @@ public class Type {
         this.nom = nom;
     }
 
-    public Type[] getFaiblesse() {
+    public List<Type> getFaiblesse() {
         return this.faiblesse;
     }
 
-    public void setFaiblesse(Type[] faiblesse) {
+    public void setFaiblesse(List<Type> faiblesse) {
         this.faiblesse = faiblesse;
     }
 
-    public Type[] getResistance() {
+    public List<Type> getResistance() {
         return this.resistance;
     }
 
-    public void setResistance(Type[] resistance) {
+    public void setResistance(List<Type> resistance) {
         this.resistance = resistance;
     }
 }
